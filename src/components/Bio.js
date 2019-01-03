@@ -1,8 +1,7 @@
-import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import { graphql, StaticQuery } from 'gatsby';
+import React from 'react';
+import { rhythm } from '../utils/typography';
 
-import { rhythm } from '../utils/typography'
 
 function Bio() {
   return (
@@ -13,26 +12,19 @@ function Bio() {
         return (
           <div
             style={{
-              display: `flex`,
+              
               marginBottom: rhythm(2.5),
             }}
           >
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-              }}
-            />
             <p>
-              Written by <strong>{author}</strong>, love to code, currently practicing the dark arts of programming at <a href="https://twitter.com/SpotdraftHQ">SpotDraft.</a> <br/>
+              Written by <strong>{author}</strong>. Loves to code, currently practicing the dark arts of programming at <a href="https://twitter.com/SpotdraftHQ">SpotDraft.</a> <br/>
               <a href={`https://twitter.com/${social.twitter}`}>
                 Follow me on Twitter
               </a>
             </p>
+            <hr style={{
+              marginBottom: rhythm(1),
+            }}/>
           </div>
         )
       }}

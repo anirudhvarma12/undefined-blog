@@ -22,7 +22,7 @@ Lets assume that you have a payment configuration based on which you want to sho
 
 Creating a structural directive is pretty similar to creating an attribute directive.
 
-```
+```typescript
 @Directive({ selector: '[appRenderIfEnabled]'})
 export class RenderFeatureDirective implements OnInit{
 
@@ -58,7 +58,7 @@ The directive gets the reference to a `TemplateRef` and a `ViewContainer`, this 
 Now the custom directive is ready to be used, add it to any component like: 
 
 
-```
+```html
 <my-pro-version-component *appRenderIfEnabled="'PRO_PACKAGE_ONLY'"></my-pro-version-component>
 ```
 
@@ -68,7 +68,7 @@ Till now, our directive is just taking the flag as an input, but what if you wan
 
 The key part of having additional inputs in structural directives is that the name of the input property must be prefixed with the selector. In our case, we want a `defaultConfig`, so the name of the input property would be `appRenderIfEnabledDefaultConfig`.
 
-```
+```typescript
 @Directive({ selector: '[appRenderIfEnabled]'})
 export class RenderFeatureDirective implements OnInit{
 
@@ -90,7 +90,7 @@ export class RenderFeatureDirective implements OnInit{
 
 The new input can be simply added using the following syntax:
 
-```
+```html
 <my-pro-version-component *appRenderIfEnabled="'PRO_PACKAGE_ONLY';defaultConfig: true"></my-pro-version-component>
 ```
 
