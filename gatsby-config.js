@@ -3,7 +3,7 @@ module.exports = {
     title: `Undefined`,
     author: `Anirudh Varma`,
     description: `Personal blog by Anirudh Varma, mostly about code and to bring together my random thoughts.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://un-defined.netlify.com/`,
     social: {
       twitter: `aniketvarma12`
     },
@@ -57,13 +57,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Undefined - Blog by Anirudh Varma`,
+        short_name: `Undefined`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#B33771`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/blog-icon.png`,
       },
     },
     `gatsby-plugin-offline`,
