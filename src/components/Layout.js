@@ -2,8 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import { rhythm, scale } from '../utils/typography'
-require("prismjs/themes/prism-tomorrow.css");
-
+require('prismjs/themes/prism-tomorrow.css')
 
 class Layout extends React.Component {
   render() {
@@ -65,20 +64,25 @@ class Layout extends React.Component {
       >
         {header}
         {children}
-        <footer style={{
-          display: "flex",
-          justifyContent: "space-between"
-        }}>
+        <footer
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
           <div>
-            <a href="https://github.com/anirudhvarma12">GitHub</a> &bull; {' '}
-            <a href="https://twitter.com/aniketvarma12">Twitter</a>
+            <a href="https://github.com/anirudhvarma12">GitHub</a> &bull;{' '}
+            <a href="https://twitter.com/aniketvarma12">Twitter</a> &bull;{' '}
+            <a href="/rss.xml">RSS</a>
           </div>
-          <div>Powered by <a href="https://www.gatsbyjs.org/">Gatsby</a></div>
+          <div>
+            {' '}
+            Powered by <a href="https://www.gatsbyjs.org/">Gatsby</a>
+          </div>
         </footer>
       </div>
     )
   }
 }
-
 
 export default Layout

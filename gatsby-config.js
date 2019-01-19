@@ -5,7 +5,7 @@ module.exports = {
     description: `Personal blog by Anirudh Varma, mostly about code and to bring together my random thoughts.`,
     siteUrl: `https://un-defined.netlify.com/`,
     social: {
-      twitter: `aniketvarma12`
+      twitter: `aniketvarma12`,
     },
   },
   plugins: [
@@ -50,7 +50,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-51945335-1`,
+        respectDNT: true,
       },
     },
     `gatsby-plugin-feed`,
