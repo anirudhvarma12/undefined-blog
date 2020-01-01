@@ -3,7 +3,7 @@ module.exports = {
     title: `Undefined`,
     author: `Anirudh Varma`,
     description: `Personal blog by Anirudh Varma, mostly about code and to bring together my random thoughts.`,
-    siteUrl: `https://un-defined.netlify.com/`,
+    siteUrl: `https://anirudhv.xyz/`,
     social: {
       twitter: `aniketvarma12`,
     },
