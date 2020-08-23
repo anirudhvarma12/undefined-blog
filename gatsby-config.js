@@ -42,6 +42,15 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              removeAccents: true,
+              isIconAfterHeader: false,
+              className: 'anchor-hint',
+              elements: ['h1', 'h2'],
+            },
+          },
         ],
       },
     },
