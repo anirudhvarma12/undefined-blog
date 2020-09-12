@@ -5,7 +5,7 @@ module.exports = {
     description: `Personal blog by Anirudh Varma, mostly about code and to bring together my random thoughts.`,
     siteUrl: `https://anirudhv.xyz/`,
     social: {
-      twitter: `aniketvarma12`,
+      twitter: `anirudhvarma_12`,
     },
   },
   plugins: [
