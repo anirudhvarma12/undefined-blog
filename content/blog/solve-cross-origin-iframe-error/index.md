@@ -80,6 +80,22 @@ When you go to `local-dev.your-awesome.app`, you should see your app being serve
 
 This magic happens becuase proxrox configures a `proxy_pass` in nginx for us which takes all requests going to `/` and passes it to our app at `localhost:3000`
 
+### Setting up proxrox on Linux
+Setting up proxrox on linux takes some more effort due to permissions. Turns out only root processes are allowed to bind to port < 1024. To get around this limitation, you can use `authbind`. 
+
+Authbind is a utility that allows processes to bind to 80/443 or other ports under 1024 without having to gain root access.
+
+```bash
+sudo apt-get install authbind
+# Bind 80 & 443.
+sudo touch /etc/authbind/byport/80
+sudo touch /etc/authbind/byport/443
+sudo chmod 777 /etc/authbind/byport/80
+sudo chmod 777 /etc/authbind/byport/443
+
+authbind --deep proxrox start .proxrox.yaml
+```
+
 # Setup proxy for iframe document
 Now that our app is running at `local-dev.your-awesome.app`,  we just need to get the embeds to serve at `/embed`. To do this, edit your `.proxrox.yaml` file again and add the following configuration - 
 
