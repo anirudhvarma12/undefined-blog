@@ -79,6 +79,54 @@ let guess: u32 = match guess.trim().parse() {
         };
 ```
 
+### Immutable Variables
+One major difference in Rust vs the other langugages I mentioned above is that variables in Rust are immutable by default. 
+
+In cases where we need to re-assign a value to a variable, we need to explicitly mark that variable as mutable by using the `mut` keyword.
+
+```rs
+let a = 5; //This is immutable, `a` cannot be re-assigned.
+let mut b = 10; // `b` can be reassigned.
+```
+
+### Shadowing
+Rust allows developers to re-declare a variable with the same name in a scope. This is called Shadowing.
+
+Consider the following snippet - 
+
+```rs
+fn main() {
+    let x = 5;
+
+    let x = x + 1;
+
+    {
+        let x = x * 2;
+        println!("The value of x in the inner scope is: {}", x); // This will print 12
+    }
+
+    println!("The value of x is: {}", x); // This is still 6.
+}
+
+```
+
+Honestly, the first time I saw this, I was pretty confused. Alot of other languages just refuse this kind of re-declaring of variables in scope.
+
+Technically, this variable is still immutable, i.e. this snippet would fail -
+```rs
+fn main() {
+    let x = 5;
+
+    x = x + 1; // will fail
+}
+```
+
+The usecase for shadowing defined in the [Rust Book](https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html#shadowing) is for running multiple transforms on the same variable without having to declare a bunch of variables names that we don't care about. 
+
+It will interesting to see if this causes any issues on larger Rust codebases.
+
 ---
 
 **Last Updated**: 10 December 2021.
+
+
