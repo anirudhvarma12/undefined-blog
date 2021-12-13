@@ -44,7 +44,7 @@ This post is supposed to be just a journal of things that I might like, dislike 
 
 Rust has an expressive `match` syntax that can be used to compare values. A match expression is written like -
 
-```rs
+```rust
 use std::cmp::Ordering;
 
 fn main(){
@@ -69,7 +69,7 @@ The great thing here is that if a function returns a `Result`, then the caller m
 
 Consider this code that converts a string to an int -
 
-```rs
+```rust
 let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => {
@@ -84,7 +84,7 @@ One major difference in Rust vs the other langugages I mentioned above is that v
 
 In cases where we need to re-assign a value to a variable, we need to explicitly mark that variable as mutable by using the `mut` keyword.
 
-```rs
+```rust
 let a = 5; //This is immutable, `a` cannot be re-assigned.
 let mut b = 10; // `b` can be reassigned.
 ```
@@ -94,7 +94,7 @@ Rust allows developers to re-declare a variable with the same name in a scope. T
 
 Consider the following snippet - 
 
-```rs
+```rust
 fn main() {
     let x = 5;
 
@@ -113,7 +113,7 @@ fn main() {
 Honestly, the first time I saw this, I was pretty confused. Alot of other languages just refuse this kind of re-declaring of variables in scope.
 
 Technically, this variable is still immutable, i.e. this snippet would fail -
-```rs
+```rust
 fn main() {
     let x = 5;
 
@@ -144,7 +144,7 @@ Expressions return a value, Rust is an [Expression oriented](https://en.wikipedi
 
 The block `{}` created for new scopes is an expression and thus can be assigned to variable like - 
 
-```rs
+```rust
    let y = {
         let x = 3;
         x + 1
@@ -159,7 +159,7 @@ In Rust, the by default, the return value of the function is the value returned 
 ### Conditional Assignemnt
 Since `if` is an expression, conditional assignemnts don't require additional syntax. 
 
-```rs
+```rust
 let condition = true;
 let number = if condition { 5 } else { 6 };
 ```
@@ -169,7 +169,7 @@ Rust has built-in support for infinite loops [using the `loop` keyword](https://
 
 #### Returning with break;
 Another first for me, was the ability to return values with the `break` keyword. 
-```rs
+```rust
     let mut counter = 0;
 
     let result = loop {
