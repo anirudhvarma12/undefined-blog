@@ -14,7 +14,7 @@ I have been thinking of picking up a new language for sometime now and the choic
 
 ## What is this post?
 
-This post is supposed to be just a journal of things that I might like, dislike or find interesting enough to document as I learn Rust enough to build a simple CLI app.
+This post is supposed to be just a journal of things that I might like, dislike or find interesting enough to document as I learn Rust enough to build a simple CLI app. I am following the [Rust Programming Language Book](https://doc.rust-lang.org/book) and many snippets here are picked from there.
 
 ## The Setup: Rust and Sublime Text 3 (MacOS)
 
@@ -125,8 +125,70 @@ The usecase for shadowing defined in the [Rust Book](https://doc.rust-lang.org/b
 
 It will interesting to see if this causes any issues on larger Rust codebases.
 
+### Arrays
+* Arrays in Rust are more like Java than JavaScript. While an array in JavaScript can grow in size after initialization, arrays in Rust are fixed size. 
+* An array maybe initialized using the type of its elements and the the length like - `let x:[char, 5] = ['a','b','c','d','e']`
+* Rust also provides a shorthand syntax when we want to create an array with the same elements like `let x = [3;'a']`. This creates an array like `['a','a','a']`
+
+### Expressions vs Statements
+Statements do not return a value. An assignemnt is a statement. Consider the following JavaScript snippet;
+```js
+const a = b = 12;
+console.log(a); // prints 12
+console.log(b); // prints 12
+```
+
+Here the variable `a` gets a value 12, because `b=12` returns 12. However, assignments in Rust don't return a value.
+
+Expressions return a value, Rust is an [Expression oriented](https://en.wikipedia.org/wiki/Expression-oriented_programming_language) language.
+
+The block `{}` created for new scopes is an expression and thus can be assigned to variable like - 
+
+```rs
+   let y = {
+        let x = 3;
+        x + 1
+    };
+```
+
+Here the last line in the block does not end with a semi-colon (;), thats because expressions do not include ending semicolons, if we add a semicolon, then it becomes a statement and hence it does not return a value.
+
+### Return Values
+In Rust, the by default, the return value of the function is the value returned by the last expression in the function. Using `return` can be used to exit early, but otherwise its optional.
+
+### Conditional Assignemnt
+Since `if` is an expression, conditional assignemnts don't require additional syntax. 
+
+```rs
+let condition = true;
+let number = if condition { 5 } else { 6 };
+```
+
+### Infinite Loops? There is a keyword for that
+Rust has built-in support for infinite loops [using the `loop` keyword](https://doc.rust-lang.org/book/ch03-05-control-flow.html#repeating-code-with-loop). This is the first language where I am seeing this. 
+
+#### Returning with break;
+Another first for me, was the ability to return values with the `break` keyword. 
+```rs
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("The result is {}", result);
+```
+* Note that since `loop` is treated as an expression that yields a value, we can put it on the right side of assignment. 
+* The `break counter * 2` statement not only stops the loop, but assigns the value to the variable `result`
+
+*Source* https://doc.rust-lang.org/book/ch03-05-control-flow.html#returning-values-from-loops
+
 ---
 
-**Last Updated**: 10 December 2021.
+**Last Updated**: 13 December 2021.
 
 
