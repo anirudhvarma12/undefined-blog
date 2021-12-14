@@ -187,6 +187,37 @@ Another first for me, was the ability to return values with the `break` keyword.
 
 *Source* https://doc.rust-lang.org/book/ch03-05-control-flow.html#returning-values-from-loops
 
+### Ownership
+Just refer - https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html
+
+#### Rules of ownership
+* Each value in Rust has a variable that’s called its owner.
+* There can only be one owner at a time.
+* When the owner goes out of scope, the value will be dropped.
+
+
+#### Reassigning 'objects'
+Consider the following JS Code:
+
+```js
+    const x = {foo:1};
+    const y = x;
+    y.foo = 2; // this works and sets x.foo = 2
+```
+Here JavaScript assigns the reference to the variable x to y. So when some code alters `y.foo`, it's actually changing `x.foo`. 
+
+Consider the following rust snippet
+
+```rust
+    let s1 = String::from("hello");
+    let s2 = s1;
+    println!(s1); // this errors.
+```
+
+In this case, Rust too copies the pointer to where "Hello" is stored, but does not copy the data itself. However, due to how ownership works, and to keep things simple, `let s2=s1` actually invalidates `s1` and transfers the ownership of `Hello` to `s2`. After the re-assignment `s1` can no longer be used. This is called `move`. 
+
+As explained [here](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#ways-variables-and-data-interact-move),  this is done so that `hello` only has one owner (s2) and when s2 goes out of scope, Rust can easily free up the memory.
+
 ---
 
 **Last Updated**: 13 December 2021.
