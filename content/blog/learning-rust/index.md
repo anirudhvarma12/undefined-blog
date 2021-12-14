@@ -218,8 +218,46 @@ In this case, Rust too copies the pointer to where "Hello" is stored, but does n
 
 As explained [here](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#ways-variables-and-data-interact-move),  this is done so that `hello` only has one owner (s2) and when s2 goes out of scope, Rust can easily free up the memory.
 
+**Note**: Fixed length data like integers and floats, that is stored on the stack can be re-assiged without invalidating the old variable. [Read More Here](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#stack-only-data-copy)
+
+#### Ownership and Functions
+Passing data to functions as arguments also transfers the ownership of that data. Assume a regular `say_hello` function like - 
+
+```rust
+fn say_hello(name: String)->String {
+    String::from("Hello!, ") + &name
+}
+
+fn main() {
+    let s1 = String::from("foo");  
+    println!("{}", say_hello(s1));
+    println!("{}". s1); // This would complain about `s1` having moved
+}
+```
+
+Passing variables to a function and then storing its return value back in a different variable will obviously be tedios and not always desirable. To get around this Rust has the concept of [References](https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html)
+
+```rust
+fn say_hello(name: &String)->String {
+    String::from("Hello!, ") + &name
+}
+
+fn main() {
+    let s1 = String::from("foo");  
+    println!("{}", say_hello(&s1));
+    println!("{}". s1);
+}
+```
+
+The `&` syntax creates a reference to the value of `s1`, but it does not own it. Creating references is called **borrowing**.
+
+*Notes* 
+- References, just like variables are mutable by default. In order to change a reference, it needs to be marked with `&mut`.
+- There can only be one mutable reference at a time.
+
+
 ---
 
-**Last Updated**: 13 December 2021.
+**Last Updated**: 15 December 2021.
 
 
