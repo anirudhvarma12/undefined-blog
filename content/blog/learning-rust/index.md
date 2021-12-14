@@ -255,6 +255,9 @@ The `&` syntax creates a reference to the value of `s1`, but it does not own it.
 - References, just like variables are mutable by default. In order to change a reference, it needs to be marked with `&mut`.
 - There can only be one mutable reference at a time.
 
+### Slices
+Refer: https://doc.rust-lang.org/book/ch04-03-slices.html
+
 
 ---
 
