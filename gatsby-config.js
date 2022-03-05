@@ -28,6 +28,17 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: 'Table of Contents',
+              tight: true,
+              ordered: false,
+              fromHeading: 1,
+              toHeading: 3,
+              className: 'table-of-contents',
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
@@ -48,7 +59,7 @@ module.exports = {
               removeAccents: true,
               isIconAfterHeader: false,
               className: 'anchor-hint',
-              elements: ['h1', 'h2'],
+              elements: ['h1', 'h2', 'h3'],
             },
           },
         ],

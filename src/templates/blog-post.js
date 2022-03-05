@@ -5,6 +5,7 @@ import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
+import { Helmet } from 'react-helmet'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -14,6 +15,15 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
+        <Helmet>
+          <style>
+            {`
+              .anchor-hint svg {
+                visibility: visible !important;
+              }
+            `}
+          </style>
+        </Helmet>
         <SEO title={post.frontmatter.title} description={post.excerpt} />
         <h1>{post.frontmatter.title}</h1>
         <p

@@ -1,7 +1,6 @@
-import { graphql, StaticQuery } from 'gatsby';
-import React from 'react';
-import { rhythm } from '../utils/typography';
-
+import { graphql, StaticQuery } from 'gatsby'
+import React from 'react'
+import { rhythm } from '../utils/typography'
 
 function Bio() {
   return (
@@ -12,19 +11,22 @@ function Bio() {
         return (
           <div
             style={{
-              
               marginBottom: rhythm(2.5),
             }}
           >
             <p>
-              Written by <strong>{author}</strong>. Loves to code, currently practicing the dark arts of programming at <a href="https://twitter.com/SpotdraftHQ">SpotDraft.</a> <br/>
+              Written by <strong>{author}</strong>. Loves to code, leading
+              frontend at{' '}
+              <a href="https://twitter.com/SpotdraftHQ">SpotDraft.</a> <br />
               <a href={`https://twitter.com/${social.twitter}`}>
                 Follow me on Twitter
               </a>
             </p>
-            <hr style={{
-              marginBottom: rhythm(1),
-            }}/>
+            <hr
+              style={{
+                marginBottom: rhythm(1),
+              }}
+            />
           </div>
         )
       }}
