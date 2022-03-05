@@ -1,6 +1,6 @@
 ---
 title: 'Learning Rust - The Interesting Parts'
-date: '2020-12-10'
+date: '2021-12-10'
 ---
 
 I have been programming for some time now and have been fortunate enough to have worked on a bunch of different languages like Java, C#, Python, JavaScript (TypeScript).
@@ -80,7 +80,8 @@ let guess: u32 = match guess.trim().parse() {
 ```
 
 ### Immutable Variables
-One major difference in Rust vs the other langugages I mentioned above is that variables in Rust are immutable by default. 
+
+One major difference in Rust vs the other langugages I mentioned above is that variables in Rust are immutable by default.
 
 In cases where we need to re-assign a value to a variable, we need to explicitly mark that variable as mutable by using the `mut` keyword.
 
@@ -90,9 +91,10 @@ let mut b = 10; // `b` can be reassigned.
 ```
 
 ### Shadowing
+
 Rust allows developers to re-declare a variable with the same name in a scope. This is called Shadowing.
 
-Consider the following snippet - 
+Consider the following snippet -
 
 ```rust
 fn main() {
@@ -113,6 +115,7 @@ fn main() {
 Honestly, the first time I saw this, I was pretty confused. Alot of other languages just refuse this kind of re-declaring of variables in scope.
 
 Technically, this variable is still immutable, i.e. this snippet would fail -
+
 ```rust
 fn main() {
     let x = 5;
@@ -121,28 +124,31 @@ fn main() {
 }
 ```
 
-The usecase for shadowing defined in the [Rust Book](https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html#shadowing) is for running multiple transforms on the same variable without having to declare a bunch of variables names that we don't care about. 
+The usecase for shadowing defined in the [Rust Book](https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html#shadowing) is for running multiple transforms on the same variable without having to declare a bunch of variables names that we don't care about.
 
 It will interesting to see if this causes any issues on larger Rust codebases.
 
 ### Arrays
-* Arrays in Rust are more like Java than JavaScript. While an array in JavaScript can grow in size after initialization, arrays in Rust are fixed size. 
-* An array maybe initialized using the type of its elements and the the length like - `let x:[char, 5] = ['a','b','c','d','e']`
-* Rust also provides a shorthand syntax when we want to create an array with the same elements like `let x = [3;'a']`. This creates an array like `['a','a','a']`
+
+- Arrays in Rust are more like Java than JavaScript. While an array in JavaScript can grow in size after initialization, arrays in Rust are fixed size.
+- An array maybe initialized using the type of its elements and the the length like - `let x:[char, 5] = ['a','b','c','d','e']`
+- Rust also provides a shorthand syntax when we want to create an array with the same elements like `let x = [3;'a']`. This creates an array like `['a','a','a']`
 
 ### Expressions vs Statements
+
 Statements do not return a value. An assignemnt is a statement. Consider the following JavaScript snippet;
+
 ```js
-const a = b = 12;
-console.log(a); // prints 12
-console.log(b); // prints 12
+const a = (b = 12)
+console.log(a) // prints 12
+console.log(b) // prints 12
 ```
 
 Here the variable `a` gets a value 12, because `b=12` returns 12. However, assignments in Rust don't return a value.
 
 Expressions return a value, Rust is an [Expression oriented](https://en.wikipedia.org/wiki/Expression-oriented_programming_language) language.
 
-The block `{}` created for new scopes is an expression and thus can be assigned to variable like - 
+The block `{}` created for new scopes is an expression and thus can be assigned to variable like -
 
 ```rust
    let y = {
@@ -154,10 +160,12 @@ The block `{}` created for new scopes is an expression and thus can be assigned 
 Here the last line in the block does not end with a semi-colon (;), thats because expressions do not include ending semicolons, if we add a semicolon, then it becomes a statement and hence it does not return a value.
 
 ### Return Values
+
 In Rust, the by default, the return value of the function is the value returned by the last expression in the function. Using `return` can be used to exit early, but otherwise its optional.
 
 ### Conditional Assignemnt
-Since `if` is an expression, conditional assignemnts don't require additional syntax. 
+
+Since `if` is an expression, conditional assignemnts don't require additional syntax.
 
 ```rust
 let condition = true;
@@ -165,10 +173,13 @@ let number = if condition { 5 } else { 6 };
 ```
 
 ### Infinite Loops? There is a keyword for that
-Rust has built-in support for infinite loops [using the `loop` keyword](https://doc.rust-lang.org/book/ch03-05-control-flow.html#repeating-code-with-loop). This is the first language where I am seeing this. 
+
+Rust has built-in support for infinite loops [using the `loop` keyword](https://doc.rust-lang.org/book/ch03-05-control-flow.html#repeating-code-with-loop). This is the first language where I am seeing this.
 
 #### Returning with break;
-Another first for me, was the ability to return values with the `break` keyword. 
+
+Another first for me, was the ability to return values with the `break` keyword.
+
 ```rust
     let mut counter = 0;
 
@@ -182,29 +193,33 @@ Another first for me, was the ability to return values with the `break` keyword.
 
     println!("The result is {}", result);
 ```
-* Note that since `loop` is treated as an expression that yields a value, we can put it on the right side of assignment. 
-* The `break counter * 2` statement not only stops the loop, but assigns the value to the variable `result`
 
-*Source* https://doc.rust-lang.org/book/ch03-05-control-flow.html#returning-values-from-loops
+- Note that since `loop` is treated as an expression that yields a value, we can put it on the right side of assignment.
+- The `break counter * 2` statement not only stops the loop, but assigns the value to the variable `result`
+
+_Source_ https://doc.rust-lang.org/book/ch03-05-control-flow.html#returning-values-from-loops
 
 ### Ownership
+
 Just refer - https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html
 
 #### Rules of ownership
-* Each value in Rust has a variable that’s called its owner.
-* There can only be one owner at a time.
-* When the owner goes out of scope, the value will be dropped.
 
+- Each value in Rust has a variable that’s called its owner.
+- There can only be one owner at a time.
+- When the owner goes out of scope, the value will be dropped.
 
 #### Reassigning 'objects'
+
 Consider the following JS Code:
 
 ```js
-    const x = {foo:1};
-    const y = x;
-    y.foo = 2; // this works and sets x.foo = 2
+const x = { foo: 1 }
+const y = x
+y.foo = 2 // this works and sets x.foo = 2
 ```
-Here JavaScript assigns the reference to the variable x to y. So when some code alters `y.foo`, it's actually changing `x.foo`. 
+
+Here JavaScript assigns the reference to the variable x to y. So when some code alters `y.foo`, it's actually changing `x.foo`.
 
 Consider the following rust snippet
 
@@ -214,14 +229,15 @@ Consider the following rust snippet
     println!(s1); // this errors.
 ```
 
-In this case, Rust too copies the pointer to where "Hello" is stored, but does not copy the data itself. However, due to how ownership works, and to keep things simple, `let s2=s1` actually invalidates `s1` and transfers the ownership of `Hello` to `s2`. After the re-assignment `s1` can no longer be used. This is called `move`. 
+In this case, Rust too copies the pointer to where "Hello" is stored, but does not copy the data itself. However, due to how ownership works, and to keep things simple, `let s2=s1` actually invalidates `s1` and transfers the ownership of `Hello` to `s2`. After the re-assignment `s1` can no longer be used. This is called `move`.
 
-As explained [here](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#ways-variables-and-data-interact-move),  this is done so that `hello` only has one owner (s2) and when s2 goes out of scope, Rust can easily free up the memory.
+As explained [here](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#ways-variables-and-data-interact-move), this is done so that `hello` only has one owner (s2) and when s2 goes out of scope, Rust can easily free up the memory.
 
 **Note**: Fixed length data like integers and floats, that is stored on the stack can be re-assiged without invalidating the old variable. [Read More Here](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#stack-only-data-copy)
 
 #### Ownership and Functions
-Passing data to functions as arguments also transfers the ownership of that data. Assume a regular `say_hello` function like - 
+
+Passing data to functions as arguments also transfers the ownership of that data. Assume a regular `say_hello` function like -
 
 ```rust
 fn say_hello(name: String)->String {
@@ -229,7 +245,7 @@ fn say_hello(name: String)->String {
 }
 
 fn main() {
-    let s1 = String::from("foo");  
+    let s1 = String::from("foo");
     println!("{}", say_hello(s1));
     println!("{}". s1); // This would complain about `s1` having moved
 }
@@ -243,7 +259,7 @@ fn say_hello(name: &String)->String {
 }
 
 fn main() {
-    let s1 = String::from("foo");  
+    let s1 = String::from("foo");
     println!("{}", say_hello(&s1));
     println!("{}". s1);
 }
@@ -251,16 +267,15 @@ fn main() {
 
 The `&` syntax creates a reference to the value of `s1`, but it does not own it. Creating references is called **borrowing**.
 
-*Notes* 
+_Notes_
+
 - References, just like variables are mutable by default. In order to change a reference, it needs to be marked with `&mut`.
 - There can only be one mutable reference at a time.
 
 ### Slices
-Refer: https://doc.rust-lang.org/book/ch04-03-slices.html
 
+Refer: https://doc.rust-lang.org/book/ch04-03-slices.html
 
 ---
 
 **Last Updated**: 15 December 2021.
-
-
