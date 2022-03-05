@@ -1,6 +1,7 @@
 ---
 title: 'Book Notes: Psychology of Money'
 date: '2022-03-05'
+ogimage: './cover.jpg'
 ---
 
 ![Cover](./cover.jpg)
