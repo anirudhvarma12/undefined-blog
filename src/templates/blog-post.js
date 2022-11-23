@@ -23,6 +23,12 @@ class BlogPostTemplate extends React.Component {
               .anchor-hint svg {
                 visibility: visible !important;
               }
+              .img-caption {
+                display:block;
+                text-align: center;
+                font-size: 12px;
+                font-style: italic;
+              }
             `}
           </style>
         </Helmet>
