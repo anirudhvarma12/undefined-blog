@@ -32,6 +32,9 @@ Just a random collection of quotes, highlights, couplets etc that I like.
 
 > You don't cry because you're weak, you cry because you've been strong for too long
 
+> Grief is like a ball in a box. When you first experience it, the grief is so big and life-changing that it’s touching every single side all the time.
+> As you live your life with grief, the box gets bigger but the ball stays the same. It becomes less likely that the grief will touch the edges. When it does, the grief still hurts as much as it always has, but it doesn’t come to you as often.
+
 ---
 
 ## Poetry
