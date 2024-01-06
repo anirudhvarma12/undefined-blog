@@ -10,6 +10,7 @@ Just a random collection of quotes, highlights, couplets etc that I like.
 
 ---
 
+
 ## Movies
 
 > Dr. Banks: If you knew your life from start to finish, would you change something?
@@ -35,6 +36,7 @@ Just a random collection of quotes, highlights, couplets etc that I like.
 > Grief is like a ball in a box. When you first experience it, the grief is so big and life-changing that it’s touching every single side all the time.
 > As you live your life with grief, the box gets bigger but the ball stays the same. It becomes less likely that the grief will touch the edges. When it does, the grief still hurts as much as it always has, but it doesn’t come to you as often.
 
+> The most beautiful discovery true friends make is that they can grow separately without growing apart.
 ---
 
 ## Poetry
